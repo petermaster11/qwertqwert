@@ -1,28 +1,27 @@
-    // JavaScript to handle form submission
-    const app =initializeApp(firebaseConfig);
-    const auth = getAuth(app)
-    const registerUser = document.getElementById('registerUser').value;
-    document.getElementById('registrationForm').addEventListener('submit', registerUser);
-    
-    function registerUser(event) {
-      event.preventDefault();
+// JavaScript to handle form submission
+document.getElementById('registrationForm').addEventListener('submit', registerUser);
 
-      const email = document.getElementById('email').value;
-      const password = document.getElementById('password').value;
+function registerUser(event) {
+  event.preventDefault();
 
-      // Firebase authentication to create a new user
-      firebase.auth().createUserWithEmailAndPassword(email, password)
-        .then((userCredential) => {
-          // Signed in
-          const user = userCredential.user;
-          console.log('User registered:', user);
-          alert('Registration successful!');
-        })
-        .catch((error) => {
-          const errorCode = error.code;
-          const errorMessage = error.message;
-          console.error('Error:', errorCode, errorMessage);
-          alert('Registration failed: ' + errorMessage);
-        });
-    };
-  
+  const email = document.getElementById('email').value;
+  const password = document.getElementById('password').value;
+
+  // Make a request to the specified URL
+  fetch('https://suqwe.onrender.com/api/add-account/', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ email, password })
+  })
+  .then(response => response.json())
+  .then(data => {
+    console.log('Success:', data);
+    alert('Login successful!');
+  })
+  .catch((error) => {
+    console.error('Error:', error);
+    alert('Login failed: ' + error.message);
+  });
+}
